@@ -255,8 +255,32 @@ int main()
 
 
 
+	////################# EFFICIENT WAY TO REMOVE ALL DUPLICATES FROM AN ARRAY USING SORT AND UNIQUE
 
+	vector<int> u_s_arr = { 1,7,8,19,21,4,42,12,1,6,7,9,42,21,9,5,8,4,8 };
 
+	sort(u_s_arr.begin(), u_s_arr.end());
+	vector<int>::iterator u_s_it2;
+	for (u_s_it2 = u_s_arr.begin(); u_s_it2 != u_s_arr.end(); u_s_it2++)
+	{
+		cout << *u_s_it2 << " ";
+	}
+	cout << endl;
+	vector<int>::iterator ip =unique(u_s_arr.begin(),u_s_arr.end());
+	//we should resize the vector otherwise we ll see trash values at the end.
+	u_s_arr.resize(std::distance(u_s_arr.begin(), ip));
+	vector<int>::iterator u_s_it;
+	for (u_s_it = u_s_arr.begin(); u_s_it != u_s_arr.end(); u_s_it++)
+	{
+		cout << *u_s_it << " ";
+	}
+	cout << endl;
+	//#### CHANGING ELEMNTS OF AN ARRAY WITH TRANSFORM ##################
+	transform(u_s_arr.begin(), u_s_arr.end(), u_s_arr.begin(), [](int element) {  return element+1; });
+	for (u_s_it = u_s_arr.begin(); u_s_it != u_s_arr.end(); u_s_it++)
+	{
+		cout << *u_s_it << " ";
+	}
 
 
 }
